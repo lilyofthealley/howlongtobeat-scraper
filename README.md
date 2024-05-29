@@ -20,4 +20,4 @@ Run main. Feed it an id and the response will be written in the json_outputs dir
 
 This project is licensed under the DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE: 
 
-![LICENSE file](LICENSE.txt)
+![LICENSE file](LICENSE.md)
