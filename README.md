@@ -18,6 +18,4 @@ Run main. Feed it an id and the response will be written in the json_outputs dir
 
 ## License
 
-This project is licensed under the DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE: 
-
-![LICENSE file](LICENSE.md)
+This project is licensed under the DO WHAT THE FUCK YOU WANT TO PUBLIC LICENSE - see the [LICENSE file](LICENSE.txt) for details.
