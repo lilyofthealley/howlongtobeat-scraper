@@ -1,0 +1,49 @@
+{
+  "id": "9548",
+  "title": "System Shock 2",
+  "description": "Choose your path, choose your weapons, choose your skills and then immerse yourself in what is arguably one of the most frightening, eerie and simply amazing titles around. It's a kind of action-intensive RPG that few can even come close to touching. System Shock 2 sets a new approachable precedent for all first-person perspective games. It's loaded with so many extras that exploration and interaction were necessities. Cybernetic monsters, rogue robots and a bunch of mutants called \"The Many\" dot an adventure that should not be missed by anyone with a backbone and a brain. Watch out for them psi- monkeys! ",
+  "imageUrl": "https://howlongtobeat.com/games/Systemshock2box.jpg?width=760",
+  "platforms": [
+    "PC",
+    "PlayStation 5",
+    "Xbox Series X/S"
+  ],
+  "genres": [
+    "First-Person",
+    "Action",
+    "RPG",
+    "Shooter"
+  ],
+  "developers": [
+    "Irrational Games",
+    "Looking Glass Studios"
+  ],
+  "publishers": [
+    "Electronic Arts"
+  ],
+  "released": "1999-08-11",
+  "timeLabels": [
+    [
+      "gameplayMain",
+      "Main Story"
+    ],
+    [
+      "gameplayMainExtra",
+      "Main + Sides"
+    ],
+    [
+      "gameplayComplete",
+      "Completionist"
+    ],
+    [
+      "gameplayAllStyles",
+      "All Styles"
+    ]
+  ],
+  "gameplayMain": 13.5,
+  "gameplayMainExtra": 17.5,
+  "gameplayCompletionist": 22.5,
+  "gameplayAllStyles": 16,
+  "additionalContent": [],
+  "mainGame": ""
+}

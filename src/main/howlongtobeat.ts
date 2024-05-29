@@ -131,8 +131,6 @@ export class HowLongToBeatParser {
     const gameDescription = $('.in.back_primary.shadow_box div[class*=GameSummary_large__]').first().text().replace(/\s*\.\.\.Read More/, '');
     const imageUrl =  $('div[class*=GameHeader_game_image__]').first().find('img').attr('src')?.trim() ?? '';
 
-    console.log(`\n\n${imageUrl}\n\n\n`);
-
     let timeLabels: Array<string[]> = new Array<string[]>();
     let gameplayMain: number = 0;
     let gameplayMainExtra: number = 0;

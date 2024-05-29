@@ -15,13 +15,14 @@ async function main() {
 
     try {
         const response = await hltbService.detail(gameId);
+        console.log();
         console.log(response);
         const formattedJsonResponse = JSON.stringify(response, null, 2);
         const fileName: string = response.title.replace(/[<>:"\/\\|?*\x00-\x1F]/g, '');    
         const filePath: string = `..\\..\\..\\json_outputs\\${fileName}.json`;
 
         fs.writeFileSync(filePath, formattedJsonResponse);
-        console.log('JSON response has been written to response.json');
+        console.log(`JSON response has been written to ${fileName}.json`);
 
         copyPaste.copy(fileName);
         console.log('fileName has been copied to clipboard');
