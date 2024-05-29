@@ -1,0 +1,25 @@
+{
+  "name": "howlongtobeat-scraper",
+  "version": "1.0.0",
+  "description": "Get data about videogames providing the howlongtobeat id and write that data to a JSON file",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "devDependencies": {
+    "@types/axios": "^0.14.0",
+    "@types/cheerio": "^0.22.35",
+    "@types/copy-paste": "^1.1.33",
+    "@types/fast-levenshtein": "^0.0.4",
+    "@types/readline-sync": "^1.4.8",
+    "@types/user-agents": "^1.0.4",
+    "typescript": "^5.4.2"
+  },
+  "dependencies": {
+    "axios": "^1.6.8",
+    "cheerio": "^1.0.0-rc.12",
+    "copy-paste": "^1.5.3",
+    "date-fns": "^3.5.0",
+    "readline-sync": "^1.4.10",
+    "user-agents": "^1.1.146"
+  }
+}
