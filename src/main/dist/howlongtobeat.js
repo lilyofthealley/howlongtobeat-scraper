@@ -271,6 +271,31 @@ class HowLongToBeatParser {
         });
         return new HowLongToBeatEntry(id, gameName, gameDescription, imageUrl, platforms, genres, developers, publishers, firstRelease, timeLabels, gameplayMain, gameplayMainExtra, gameplayComplete, gameplayAllStyles, additionalContent, mainGame);
     }
+    static excludeFields(fields) {
+        this.excludedFields = fields;
+    }
+    static includeFields(fields) {
+        const allFields = [
+            "description",
+            "image-url",
+            "platforms",
+            "genres",
+            "developers",
+            "publishers",
+            "release-date",
+            "time",
+            "time-main",
+            "time-extra",
+            "time-completionist",
+            "time-all-styles",
+            "dlc",
+        ];
+        allFields.forEach((field) => {
+            if (!fields.includes(field)) {
+                this.excludedFields.push(field);
+            }
+        });
+    }
     // Replaces some genres with more appropriate values (for me at least)
     // It also prevents the duplication of the genre 'Side scrolling' and different values for RPG games
     static formatGenres(genres) {

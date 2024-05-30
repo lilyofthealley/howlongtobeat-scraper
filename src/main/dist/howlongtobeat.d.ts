@@ -43,6 +43,8 @@ export declare class HowLongToBeatParser {
      * @return HowLongToBeatEntry representing the page
      */
     static parseDetails(html: string, id: string): HowLongToBeatEntry;
+    static excludeFields(fields: string[]): void;
+    static includeFields(fields: string[]): void;
     private static formatGenres;
     /**
      * Utility method used for parsing an array of strings
