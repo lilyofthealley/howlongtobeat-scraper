@@ -14,26 +14,27 @@ export declare class HowLongToBeatService {
 export declare class HowLongToBeatEntry {
     readonly id: string;
     readonly title: string;
-    readonly description: string;
-    readonly imageUrl: string;
-    readonly platforms: string[];
-    readonly genres: string[];
-    readonly developers: string[];
-    readonly publishers: string[];
-    readonly released: string;
-    readonly timeLabels: Array<string[]>;
-    readonly gameplayMain: number;
-    readonly gameplayMainExtra: number;
-    readonly gameplayCompletionist: number;
-    readonly gameplayAllStyles: number;
-    readonly additionalContent: string[];
-    readonly mainGame: string;
-    constructor(id: string, title: string, description: string, imageUrl: string, platforms: string[], genres: string[], developers: string[], publishers: string[], released: string, timeLabels: Array<string[]>, gameplayMain: number, gameplayMainExtra: number, gameplayCompletionist: number, gameplayAllStyles: number, additionalContent: string[], mainGame: string);
+    readonly description?: string | undefined;
+    readonly imageUrl?: string | undefined;
+    readonly platforms?: string[] | undefined;
+    readonly genres?: string[] | undefined;
+    readonly developers?: string[] | undefined;
+    readonly publishers?: string[] | undefined;
+    readonly releaseDate?: string | undefined;
+    readonly timeLabels?: string[][] | undefined;
+    readonly gameplayMain?: number | undefined;
+    readonly gameplayMainExtra?: number | undefined;
+    readonly gameplayCompletionist?: number | undefined;
+    readonly gameplayAllStyles?: number | undefined;
+    readonly additionalContent?: string[] | undefined;
+    readonly mainGame?: string | undefined;
+    constructor(id: string, title: string, description?: string | undefined, imageUrl?: string | undefined, platforms?: string[] | undefined, genres?: string[] | undefined, developers?: string[] | undefined, publishers?: string[] | undefined, releaseDate?: string | undefined, timeLabels?: string[][] | undefined, gameplayMain?: number | undefined, gameplayMainExtra?: number | undefined, gameplayCompletionist?: number | undefined, gameplayAllStyles?: number | undefined, additionalContent?: string[] | undefined, mainGame?: string | undefined);
 }
 /**
  * Internal helper class to parse html and create a HowLongToBeatEntry
  */
 export declare class HowLongToBeatParser {
+    private static excludedFields;
     /**
      * Parses the passed html to generate an HowLongToBeatyEntry.
      * All the dirty DOM parsing and element traversing is done here.

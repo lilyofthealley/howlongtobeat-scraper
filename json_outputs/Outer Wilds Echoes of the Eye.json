@@ -1,0 +1,50 @@
+{
+  "id": "96280",
+  "title": "Outer Wilds: Echoes of the Eye",
+  "description": "A strange satellite photo that can’t be explained. A new museum exhibit that marks the trailhead for one last journey into the wilds. Should you pull at the thread and unravel the solar system’s deepest secret, or is some knowledge better left in the dark?",
+  "imageUrl": "https://howlongtobeat.com/games/96280_Outer_Wilds_Echoes_of_the_Eye.jpg?width=760",
+  "platforms": [
+    "Nintendo Switch",
+    "PC",
+    "PlayStation 4",
+    "PlayStation 5",
+    "Xbox One",
+    "Xbox Series X/S"
+  ],
+  "genres": [
+    "First-Person",
+    "Action",
+    "Adventure",
+    "Open World"
+  ],
+  "developers": [
+    "Mobius Digital"
+  ],
+  "publishers": [
+    "Annapurna Interactive"
+  ],
+  "releaseDate": "2021-09-28",
+  "timeLabels": [
+    [
+      "gameplayMain",
+      "Main Story"
+    ],
+    [
+      "gameplayMainExtra",
+      "Main + Sides"
+    ],
+    [
+      "gameplayComplete",
+      "Completionist"
+    ],
+    [
+      "gameplayAllStyles",
+      "All Styles"
+    ]
+  ],
+  "gameplayMain": 10.5,
+  "gameplayMainExtra": 14,
+  "gameplayCompletionist": 15.5,
+  "gameplayAllStyles": 12.5,
+  "mainGame": "Outer Wilds"
+}

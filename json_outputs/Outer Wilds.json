@@ -1,0 +1,52 @@
+{
+  "id": "57527",
+  "title": "Outer Wilds",
+  "description": "Outer Wilds is an open world mystery about a solar system trapped in an endless time loop.",
+  "imageUrl": "https://howlongtobeat.com/games/57527_Outer_Wilds.jpg?width=760",
+  "platforms": [
+    "Nintendo Switch",
+    "PC",
+    "PlayStation 4",
+    "PlayStation 5",
+    "Xbox One",
+    "Xbox Series X/S"
+  ],
+  "genres": [
+    "First-Person",
+    "Action",
+    "Adventure",
+    "Open World"
+  ],
+  "developers": [
+    "Mobius Digital"
+  ],
+  "publishers": [
+    "Annapurna Interactive"
+  ],
+  "releaseDate": "2019-05-30",
+  "timeLabels": [
+    [
+      "gameplayMain",
+      "Main Story"
+    ],
+    [
+      "gameplayMainExtra",
+      "Main + Sides"
+    ],
+    [
+      "gameplayComplete",
+      "Completionist"
+    ],
+    [
+      "gameplayAllStyles",
+      "All Styles"
+    ]
+  ],
+  "gameplayMain": 16.5,
+  "gameplayMainExtra": 22,
+  "gameplayCompletionist": 27.5,
+  "gameplayAllStyles": 21.5,
+  "additionalContent": [
+    "Echoes of the Eye"
+  ]
+}
