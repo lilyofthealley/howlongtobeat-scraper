@@ -268,6 +268,7 @@ export class HowLongToBeatParser {
           const dateString = metaData.replace(/\n/g, "").replace("EU:", "");
           releases.push(dateString);
         }
+        console.log(releases);
         firstRelease = HowLongToBeatParser.findFirstRelease(releases);
       }
     });
@@ -315,7 +316,7 @@ export class HowLongToBeatParser {
     }
 
     // Parses DLCs (or main game if a DLC is being scraped)
-    let additionalContent: string[] | undefined;
+    let additionalContent: string[] = [];
     let mainGame: string | undefined;
 
     $("tbody.spreadsheet").each(function (this: Element) {
@@ -328,7 +329,6 @@ export class HowLongToBeatParser {
         !HowLongToBeatParser.excludedFields.includes("dlc") &&
         tableTitle.text().trim().includes("Additional Content")
       ) {
-        additionalContent = [];
         $(this)
           .find("a")
           .each(function (this: Element) {
@@ -424,15 +424,19 @@ export class HowLongToBeatParser {
    */
   private static findFirstRelease(releases: string[]) {
     // Define regular expressions for matching the date formats
-    const fullDateFormatRegex = /^[a-zA-Z]+\s+\d{2},\s+\d{4}$/; // Example: "January 1, 2022"
+    const fullDateFormatRegex = /^[a-zA-Z]+\s+\d{1,2}(st|nd|rd|th)?,\s+\d{4}$/; // Example: "January 1, 2022" or "January 1st, 2022", works also for "nd", "rd" and "th" suffixes
     const yearOnlyFormatRegex = /^\d{4}$/; // Example: "2022"
 
     // Converts date strings in the releases array to Date objects
     const releasesDates = releases.map((dateString) => {
-      if (fullDateFormatRegex.test(dateString.trim())) {
-        return parse(dateString.trim(), "MMMM dd, yyyy", new Date());
-      } else if (yearOnlyFormatRegex.test(dateString.trim())) {
-        return parse(dateString.trim(), "yyyy", new Date());
+      dateString = dateString.trim();
+      if (fullDateFormatRegex.test(dateString)) {
+        console.log("full date");
+        const cleanedDateString = dateString.replace(/\b(\d{1,2})(st|nd|rd|th)\b/g, "$1");
+        console.log(cleanedDateString);
+        return parse(cleanedDateString, "MMMM dd, yyyy", new Date());
+      } else if (yearOnlyFormatRegex.test(dateString)) {
+        return parse(dateString, "yyyy", new Date());
       }
       // If the date cannot be parsed, an arbitrary date 100 years from the current date is returned
       return add(new Date(), { years: 100 });
