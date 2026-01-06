@@ -88,13 +88,14 @@ class HowLongToBeatParser {
             .text()
             .trim();
         const gameDescription = !this.excludedFields.includes("description")
-            ? $(".in.back_primary.shadow_box div[class*=GameSummary_large__]")
+            ? $('div[class*="GameSummary-module__"][class*="__profile_info"][class*="__large"]')
                 .first()
                 .text()
-                .replace(/\s*\.\.\.Read More/, "")
+                .replace(/\s*\.\.\.Read More\s*/i, "")
+                .trim()
             : undefined;
         const imageUrl = !this.excludedFields.includes("image-url")
-            ? $("div[class*=GameHeader_game_image__]")
+            ? $('div[class*="__game_image"][class~="desktop_hide"]')
                 .first()
                 .find("img")
                 .attr("src")
