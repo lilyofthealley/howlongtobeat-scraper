@@ -124,10 +124,11 @@ export class HowLongToBeatParser {
     const $ = cheerio.load(html);
     const liElements = $("div[class*=GameStats_game_times__] li");
 
-    const gameName = $("div[class*=GameHeader_profile_header__]")
+    const gameName = $('div[class*="__profile_header"][class~="shadow_text"]')
       .first()
       .text()
       .trim();
+
 
     const gameDescription: string | undefined = !this.excludedFields.includes(
       "description",

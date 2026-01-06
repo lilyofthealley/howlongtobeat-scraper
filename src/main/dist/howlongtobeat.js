@@ -83,7 +83,7 @@ class HowLongToBeatParser {
     static parseDetails(html, id) {
         const $ = cheerio_1.default.load(html);
         const liElements = $("div[class*=GameStats_game_times__] li");
-        const gameName = $("div[class*=GameHeader_profile_header__]")
+        const gameName = $('div[class*="__profile_header"][class~="shadow_text"]')
             .first()
             .text()
             .trim();
