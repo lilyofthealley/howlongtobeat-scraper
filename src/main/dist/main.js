@@ -71,7 +71,7 @@ async function main() {
         console.log(response);
         const formattedJsonResponse = JSON.stringify(response, null, 2);
         const fileName = response.title.replace(/[<>:"\/\\|?*\x00-\x1F]/g, "");
-        const filePath = `..\\..\\..\\json_outputs\\${fileName}.json`;
+        const filePath = `..\\..\\json_outputs\\${fileName}.json`;
         fs.writeFileSync(filePath, formattedJsonResponse);
         console.log(`JSON response has been written to ${fileName}.json`);
         copy_paste_1.default.copy(fileName);

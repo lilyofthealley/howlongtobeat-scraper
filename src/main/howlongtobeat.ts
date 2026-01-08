@@ -172,104 +172,68 @@ export class HowLongToBeatParser {
 
     // Parses platforms, genres, developers, publishers and release years
     $('div[class*="GameSummary-module"][class*="__profile_info"]').each(function () {
-      const metaData = $(this).text();
+      const el = $(this);
 
-      // console.log(metaData)
-
-      // Parses the platforms
       if (!HowLongToBeatParser.excludedFields.includes("platforms")) {
-        if (metaData.includes("Platforms:")) {
-          platforms = metaData
-            .replace(/\n/g, "")
-            .replace("Platforms:", "")
-            .split(",")
-            .map((data) => data.trim());
-          return;
-        } else if (metaData.includes("Platform:")) {
-          platforms = metaData
-            .replace(/\n/g, "")
-            .replace("Platform:", "")
-            .split(",")
-            .map((data) => data.trim());
+        const res = HowLongToBeatParser.extractListField(el, [
+          "Platform",
+          "Platforms"
+        ]);
+        if (res) {
+          platforms = res;
           return;
         }
       }
 
-      // Parses the genres
       if (!HowLongToBeatParser.excludedFields.includes("genres")) {
-        if (metaData.includes("Genres:")) {
-          genres = metaData
-            .replace(/\n/g, "")
-            .replace("Genres:", "")
-            .split(",")
-            .map((data) => data.trim());
-          return;
-        } else if (metaData.includes("Genre:")) {
-          genres = metaData
-            .replace(/\n/g, "")
-            .replace("Genre:", "")
-            .split(",")
-            .map((data) => data.trim());
+        const res = HowLongToBeatParser.extractListField(el, [
+          "Genre",
+          "Genres"
+        ]);
+        if (res) {
+          genres = res;
           return;
         }
       }
 
-      // Parses the developers
       if (!HowLongToBeatParser.excludedFields.includes("developers")) {
-        if (metaData.includes("Developers:")) {
-          developers = metaData
-            .replace(/\n/g, "")
-            .replace("Developers:", "")
-            .split(",")
-            .map((data) => data.trim());
-          return;
-        } else if (metaData.includes("Developer:")) {
-          developers = metaData
-            .replace(/\n/g, "")
-            .replace("Developer:", "")
-            .split("ʢ")
-            .map((data) => data.trim());
+        const res = HowLongToBeatParser.extractListField(el, [
+          "Developer",
+          "Developers"
+        ]);
+        if (res) {
+          developers = res;
           return;
         }
       }
 
-      // Parses the publishers
       if (!HowLongToBeatParser.excludedFields.includes("publishers")) {
-        if (metaData.includes("Publishers:")) {
-          publishers = metaData
-            .replace(/\n/g, "")
-            .replace("Publishers:", "")
-            .split(",")
-            .map((data) => data.trim());
-          return;
-        } else if (metaData.includes("Publisher:")) {
-          publishers = metaData
-            .replace(/\n/g, "")
-            .replace("Publisher:", "")
-            .split("ʢ")
-            .map((data) => data.trim());
+        const res = HowLongToBeatParser.extractListField(el, [
+          "Publisher",
+          "Publishers"
+        ]);
+        if (res) {
+          publishers = res;
           return;
         }
       }
 
-      // Parses every release date as a string in an array
       if (!HowLongToBeatParser.excludedFields.includes("release-date")) {
+        const metaData = el.text().replace(/\n/g, "");
+
         if (metaData.includes("JP:")) {
-          const dateString = metaData.replace(/\n/g, "").replace("JP:", "");
-          releases.push(dateString);
+          releases.push(metaData.replace("JP:", "").trim());
         }
-
         if (metaData.includes("NA:")) {
-          const dateString = metaData.replace(/\n/g, "").replace("NA:", "");
-          releases.push(dateString);
+          releases.push(metaData.replace("NA:", "").trim());
+        }
+        if (metaData.includes("EU:")) {
+          releases.push(metaData.replace("EU:", "").trim());
         }
 
-        if (metaData.includes("EU:")) {
-          const dateString = metaData.replace(/\n/g, "").replace("EU:", "");
-          releases.push(dateString);
+        if (releases.length) {
+          firstRelease = HowLongToBeatParser.findFirstRelease(releases);
         }
-        console.log(releases);
-        firstRelease = HowLongToBeatParser.findFirstRelease(releases);
       }
     });
 
@@ -454,9 +418,9 @@ export class HowLongToBeatParser {
     const releasesDates = releases.map((dateString) => {
       dateString = dateString.trim();
       if (fullDateFormatRegex.test(dateString)) {
-        console.log("full date");
+        //console.log("full date");
         const cleanedDateString = dateString.replace(/\b(\d{1,2})(st|nd|rd|th)\b/g, "$1");
-        console.log(cleanedDateString);
+        //console.log(cleanedDateString);
         return parse(cleanedDateString, "MMMM dd, yyyy", new Date());
       } else if (yearOnlyFormatRegex.test(dateString)) {
         return parse(dateString, "yyyy", new Date());

@@ -44,7 +44,7 @@ async function main() {
       /[<>:"\/\\|?*\x00-\x1F]/g,
       "",
     );
-    const filePath: string = `..\\..\\..\\json_outputs\\${fileName}.json`;
+    const filePath: string = `..\\..\\json_outputs\\${fileName}.json`;
 
     fs.writeFileSync(filePath, formattedJsonResponse);
     console.log(`JSON response has been written to ${fileName}.json`);
