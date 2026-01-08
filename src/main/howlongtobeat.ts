@@ -241,40 +241,65 @@ export class HowLongToBeatParser {
       genres = HowLongToBeatParser.formatGenres(genres);
     }
 
-    // Parses time
+    // Parses times
     if (!HowLongToBeatParser.excludedFields.includes("time")) {
-      timeLabels = new Array<string[]>();
-      liElements.each(function () {
-        let type: string = $(this).find("h4").text();
-        let time: number = HowLongToBeatParser.parseTime(
-          $(this).find("h5").text(),
-        );
+      timeLabels = [];
+
+      // Match both old <li> and new GameStats blocks
+      const timeBlocks = $(
+        'li, div[class*="GameStats-module__"][class*="time_"]'
+      );
+
+      timeBlocks.each(function () {
+        const label = $(this).find("h4").first().text().trim();
+        const rawTime = $(this).find("h5").first().text().trim();
+
+        if (!label || !rawTime) return;
+
+        const time = HowLongToBeatParser.parseTime(rawTime);
+
         if (
           !HowLongToBeatParser.excludedFields.includes("time-main") &&
-          (type.startsWith("Main Story") ||
-            type.startsWith("Single-Player") ||
-            type.startsWith("Solo"))
+          ["Main Story", "Single-Player", "Solo"].some(l =>
+            label.startsWith(l)
+          )
         ) {
           gameplayMain = time;
-          timeLabels?.push(["gameplayMain", type]);
-        } else if (
+          timeLabels!.push(["gameplayMain", label]);
+          return;
+        }
+
+        if (
           !HowLongToBeatParser.excludedFields.includes("time-extra") &&
-          (type.startsWith("Main + Sides") || type.startsWith("Co-Op"))
+          ["Main + Sides", "Co-Op"].some(l =>
+            label.startsWith(l)
+          )
         ) {
           gameplayMainExtra = time;
-          timeLabels!.push(["gameplayMainExtra", type]);
-        } else if (
+          timeLabels!.push(["gameplayMainExtra", label]);
+          return;
+        }
+
+        if (
           !HowLongToBeatParser.excludedFields.includes("time-completionist") &&
-          (type.startsWith("Completionist") || type.startsWith("Vs."))
+          ["Completionist", "Vs."].some(l =>
+            label.startsWith(l)
+          )
         ) {
           gameplayComplete = time;
-          timeLabels?.push(["gameplayComplete", type]);
-        } else if (
+          timeLabels!.push(["gameplayComplete", label]);
+          return;
+        }
+
+        if (
           !HowLongToBeatParser.excludedFields.includes("time-all-styles") &&
-          type.startsWith("All Styles")
+          (
+            label.startsWith("All Styles") ||
+            label === "HowLongToBeat"
+          )
         ) {
           gameplayAllStyles = time;
-          timeLabels?.push(["gameplayAllStyles", type]);
+          timeLabels!.push(["gameplayAllStyles", label]);
         }
       });
     }
