@@ -1,4 +1,4 @@
-import cheerio from "cheerio";
+import * as cheerio from "cheerio";
 import { parse, format, add } from "date-fns";
 
 import { HltbSearch } from "./hltbsearch";
@@ -171,7 +171,7 @@ export class HowLongToBeatParser {
     let releases: string[] = [];
 
     // Parses platforms, genres, developers, publishers and release years
-    $("div[class*=GameSummary_profile_info__]").each(function (this: Element) {
+    $('div[class*="GameSummary-module"][class*="__profile_info"]').each(function () {
       const metaData = $(this).text();
 
       // console.log(metaData)
@@ -233,7 +233,7 @@ export class HowLongToBeatParser {
         }
       }
 
-      // Parses the publisherss
+      // Parses the publishers
       if (!HowLongToBeatParser.excludedFields.includes("publishers")) {
         if (metaData.includes("Publishers:")) {
           publishers = metaData
@@ -280,7 +280,7 @@ export class HowLongToBeatParser {
     // Parses time
     if (!HowLongToBeatParser.excludedFields.includes("time")) {
       timeLabels = new Array<string[]>();
-      liElements.each(function (this: Element) {
+      liElements.each(function () {
         let type: string = $(this).find("h4").text();
         let time: number = HowLongToBeatParser.parseTime(
           $(this).find("h5").text(),
@@ -319,7 +319,7 @@ export class HowLongToBeatParser {
     let additionalContent: string[] = [];
     let mainGame: string | undefined;
 
-    $("tbody.spreadsheet").each(function (this: Element) {
+    $("tbody.spreadsheet").each(function () {
       const table = $(this).closest("table");
       const tableHead = table.children().first();
       const tableHeadRow = tableHead.children().first();
@@ -331,7 +331,7 @@ export class HowLongToBeatParser {
       ) {
         $(this)
           .find("a")
-          .each(function (this: Element) {
+          .each(function () {
             const content = $(this).text().trim();
             additionalContent?.push(content);
           });

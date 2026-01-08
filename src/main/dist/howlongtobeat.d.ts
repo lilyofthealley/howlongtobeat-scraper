@@ -21,14 +21,14 @@ export declare class HowLongToBeatEntry {
     readonly developers?: string[] | undefined;
     readonly publishers?: string[] | undefined;
     readonly releaseDate?: string | undefined;
-    readonly timeLabels?: string[][] | undefined;
+    readonly timeLabels?: Array<string[]> | undefined;
     readonly gameplayMain?: number | undefined;
     readonly gameplayMainExtra?: number | undefined;
     readonly gameplayCompletionist?: number | undefined;
     readonly gameplayAllStyles?: number | undefined;
     readonly additionalContent?: string[] | undefined;
     readonly mainGame?: string | undefined;
-    constructor(id: string, title: string, description?: string | undefined, imageUrl?: string | undefined, platforms?: string[] | undefined, genres?: string[] | undefined, developers?: string[] | undefined, publishers?: string[] | undefined, releaseDate?: string | undefined, timeLabels?: string[][] | undefined, gameplayMain?: number | undefined, gameplayMainExtra?: number | undefined, gameplayCompletionist?: number | undefined, gameplayAllStyles?: number | undefined, additionalContent?: string[] | undefined, mainGame?: string | undefined);
+    constructor(id: string, title: string, description?: string | undefined, imageUrl?: string | undefined, platforms?: string[] | undefined, genres?: string[] | undefined, developers?: string[] | undefined, publishers?: string[] | undefined, releaseDate?: string | undefined, timeLabels?: Array<string[]> | undefined, gameplayMain?: number | undefined, gameplayMainExtra?: number | undefined, gameplayCompletionist?: number | undefined, gameplayAllStyles?: number | undefined, additionalContent?: string[] | undefined, mainGame?: string | undefined);
 }
 /**
  * Internal helper class to parse html and create a HowLongToBeatEntry
