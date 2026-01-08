@@ -388,6 +388,29 @@ export class HowLongToBeatParser {
     });
   }
 
+  private static extractListField(
+    el: any,
+    labels: string[]
+  ): string[] | null {
+    const label = el.children("strong").first().text().trim();
+
+    if (!labels.includes(label.replace(/:$/, ""))) return null;
+
+    const value = el
+      .clone()
+      .children("strong, br")
+      .remove()
+      .end()
+      .text()
+      .replace(/\n/g, "")
+      .trim();
+
+    return value
+      .split(/[,]/)
+      .map((v: string) => v.trim())
+      .filter(Boolean);
+  }
+
   // Replaces some genres with more appropriate values (for me at least)
   // It also prevents the duplication of the genre 'Side scrolling' and different values for RPG games
   private static formatGenres(genres: string[]) {
